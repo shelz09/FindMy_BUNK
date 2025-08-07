@@ -163,7 +163,6 @@
     background-position: 0% 50%;
     }
 }
-
 .text-div h1{
     font-size: 56px;
     text-align: center;
@@ -193,7 +192,6 @@
     background-color: #6be788;
     cursor:pointer;
 }
-
 .scroll-div{
     display: flex;
     flex-direction: column;
@@ -206,7 +204,6 @@
     font-size: 25px;
     animation: bounce 2s infinite;
 }
-
 @keyframes bounce {
     0% {
         bottom: 0px;
@@ -251,11 +248,9 @@
     text-align: justify;
     
 }
-
 .about-us-head h1{
     margin-bottom:50px;
 }
-
 .about-us-text p{
     font-size: 20px;;
 }
@@ -465,7 +460,6 @@ text-shadow: 0 0 4px #ffffff;
         width:100%;
     }
 }
-
 @media(max-width:869px){
         .graph-body img{
             height:300px;
@@ -483,7 +477,6 @@ text-shadow: 0 0 4px #ffffff;
             width:100%;
         }
 }
-
 @media(max-width:667px){
     .navbar{
         padding:10px 10px;
