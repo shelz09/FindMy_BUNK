@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../src/css/admin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Admin Dashboard</h2>
+        <button id="logout-btn">Logout</button>
+    </nav>
+
+    <main class="container">
+        <section>
+            <h3>Manage Slots</h3>
+            <div>
+                <input type="text" id="station-id" placeholder="Enter Station ID">
+                <input type="text" id="slot-time" placeholder="Slot Time (e.g., 9AM - 10AM)">
+                <button id="add-slot">Add Slot</button>
+            </div>
+            <div id="slot-list-admin"></div>
+        </section>
+    </main>
+
+    <script type="module" src="../src/js/admin.js"></script>
+</body>
+</html>

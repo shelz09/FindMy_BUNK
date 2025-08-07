@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/index.css">
+    <link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/path/to/leaflet.css" />
+    <script src="/path/to/leaflet.js"></script>
+    <title>FindMy BUNK</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="../assets/logo/Screenshot (37).png" alt="" class="logo-img">
+            </div>
+            <div class="tags">
+                <ul class="tags-list">
+                    <li class=""><a href="#home">Home</a></li>
+                    <li class=""><a href="#aboutus">About Us</a></li>
+                    <li class=""><a href="#contactus">Contact Us</a></li>
+                    <li><button class="lgn-rdr-btn" onclick="redirectToLogin()">Login</button></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+        <div class="phone-menu hide">
+            <div class="menu-head">
+                <button class="close-menu"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="menu-body">
+                <ul class="phone-menu-ul">
+                    <li class="menu-options"><a href="#home">Home</a></li>
+                    <li class="menu-options"><a href="#aboutus">About Us</a></li>
+                    <li class="menu-options"><a href="#contactus">Contact Us</a></li>
+                    <li class="menu-options"><a href="">Login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="hero-section" id="home">
+            <div class="text-div">
+                <h1>Building the <span id="h-span">Largest</span> network
+                of <span id="h-span">EV chargers</span> in India</h1>
+                <span>Discover   |   Charge   |   Pay</span>
+            </div>
+            <button class="locate-charger-btn" onclick="redirectToLogin()">Locate Charger</button>
+            <div class="scroll-div">
+                <i class="fa-solid fa-arrow-down scroll-icon"></i>
+                <p>Scroll</p>
+            </div>
+        </div>
+        <div class="about-us" id="aboutus">
+            <div class="about-us-head">
+                <h1>Vision - The <span>Future</span> is Now</h1>
+            </div>
+            <div class="about-us-body">
+                <div class="about-us-img">
+                    
+                </div>
+                <div class="about-us-text">
+                    <p>We envisage an India where a climate-conscious public utilises electric vehicles without compromising on convenience or sustainability. Our desire to realise this dream is driven by everything we do, from our products to partners.</p>
+                </div>
+            </div>
+        </div>
+        <section class="graph">
+            <div class="graph-head">
+                <h1><span>The Electric Revolution</span> in Numbers</h1>
+                <p>Through our range of products, we are raising the bar of the EV charging ecosystem in India, improving accessibility to the future of mobility!</p>
+            </div>
+            <div class="graph-body">
+                <img src="../assets/Screenshot 2025-07-02 143326.png" alt="">
+            </div>
+        </section>
+        <div class="contact-us" id="contactus">
+            <div class="contact-us-head">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="contact-us-body">
+                <div class="input-section col">
+                    <div class="inputs">
+                        <div class="name-number">
+                            <input type="text" placeholder="Enter Your Name" class="small-inputs"/>
+                            <input type="number" placeholder="Contact" class="small-inputs"/>
+                        </div>
+                        <input type="email" placeholder="Email">
+                        <textarea name="myTextarea" rows="8" placeholder="Enter Your Message Here"></textarea>
+                    </div>
+                    <button>Submit</button>
+                </div>
+                <div class="info-section col">
+                    <div class="info-rows">
+                        <h2>Address</h2>
+                        <p>Building No. 9B, 3rd Floor, DLF Cyber City, Gurugram, Haryana-122002, India.</p>
+                    </div>
+                    <div class="info-rows">
+                        <h2>Contact Us</h2>
+                        <p>+91 8070743743 | enquiry@statiq.in</p>
+                    </div>
+                    <div class="info-rows">
+                        <h2>Careers</h2>
+                        <p>career@statiq.in</p>
+                    </div>
+                    <div class="info-rows">
+                        <h2>Workdays</h2>
+                        <p>Monday - Friday | 7:30 am - 4:30 pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="col-1 footer-cols">
+                <div class="footer-logo">
+                    <img src="../assets/logo/Screenshot (37).png" alt="">
+                </div>
+                <div class="social-links">
+                    <i class="fa-brands fa-instagram instagram"></i>
+                    <i class="fa-brands fa-facebook facebook"></i>
+                    <i class="fa-brands fa-linkedin linkedin"></i>
+                    <i class="fa-brands fa-youtube youtube"></i>
+                    <i class="fa-brands fa-x-twitter twitter"></i>
+                </div>
+            </div>
+            <div class="col-2 footer-cols">
+                <h2>Company</h2>
+                <a href="#aboutus">About Us</a>
+                <a href="">Our Team</a>
+            </div>
+            <div class="col-3 footer-cols">
+                <h2>Our Community</h2>
+                <a href="#contactus">Contact Us</a>
+                <a href="">Blogs</a>
+            </div>
+            <div class="col-4 footer-cols">
+                <h2>Our Solutions</h2>
+                <a href="">EV Charging Stations</a>
+                <a href="">Route Planner</a>
+            </div>
+        </div>
+        <script src="../src/js/script.js"></script>
+    </div>
+</body>
+</html>

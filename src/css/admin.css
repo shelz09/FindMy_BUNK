@@ -1,0 +1,33 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    padding: 20px 50px;
+    height: 100px;
+    width: 100%;
+    background-color: #101010;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    transition: all 150ms ease-in-out;
+    color:white;
+}
+.container {
+    padding: 20px;
+}
+#slot-list-admin div {
+    background: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}

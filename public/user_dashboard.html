@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/user.css">
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="map" id="map">
+        </div>
+        <div class="navbar">
+            <div class="logo">
+                <img src="../assets/logo/Screenshot (37).png" alt="" class="logo-img">
+            </div>
+            <div class="tags">
+                <ul class="tags-list">
+                    <li id="navbar-username" class="unselectable">Loading...</li>
+                </ul>
+            </div>
+        </div>
+        <div class="logout-popup slide">
+            <button class="logout-btn">LogOut</button>
+        </div>
+        <div class="sidebar">
+            <div id="station-list">
+            </div>
+        </div>
+        <div id="station-info" class="hidden">
+            <button id="close-info">x</button>
+            <h3 id="info-name"></h3>
+            <p><strong>Address:</strong> <span id="info-address"></span></p>
+            <p><strong>Operator:</strong> <span id="info-operator"></span></p>
+            <p><strong>Usage:</strong> <span id="info-usage"></span></p>
+            <a id="directions-link" href="" target="_blank" rel="noopener noreferrer">Directions <i class="fa-solid fa-diamond-turn-right"></i></a>
+            <span id="info-coordinates" class="hidden"></span>
+            <div id="slot-list"></div>
+        </div>
+
+    </div>
+    <script type="module" src="../src/js/user.js"></script>
+</body>
+</html>
