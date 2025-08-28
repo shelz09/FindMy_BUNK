@@ -6,18 +6,6 @@ const addSlotBtn = document.getElementById("add-slot");
 const slotListAdmin = document.getElementById("slot-list-admin");
 const logoutBtn = document.getElementById("logout-btn");
 
-// Ensure only admin access
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    window.location.href = "auth.html";
-  } else {
-    console.log("Logged in as:", user.email); // Debug
-    if (user.email.trim().toLowerCase() !== "admin@billa.com") {
-      alert("Access denied! Only admins allowed.");
-      window.location.href = "index.html";
-    }
-  }
-});
 
 
 // Add a new slot

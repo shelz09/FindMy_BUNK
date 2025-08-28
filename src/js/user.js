@@ -62,8 +62,9 @@ navigator.geolocation.getCurrentPosition(
         const sAddress = station.AddressInfo?.AddressLine1 || "Unknown Address";
         const sOperator = station.OperatorInfo?.Title || "Unknown Operator";
         const sUsage = station.UsageType?.Title || "Usage info not available";
-        console.log(station.AddressInfo.ID)
-        // Add marker
+        const sUID = station.AddressInfo?.ID?.toString() || "No UID";
+
+        // Add marker to map
         L.marker([sLat, sLng])
           .addTo(map)
           .bindTooltip(`<b>${sName}</b><br>${sAddress}`, {
@@ -82,15 +83,29 @@ navigator.geolocation.getCurrentPosition(
           <p><strong>Operator:</strong> ${sOperator}</p>
           <p><strong>Usage:</strong> ${sUsage}</p>`;
 
-        div.addEventListener("click", async() => {
+        div.addEventListener("click", async () => {
           document.getElementById("station-info").classList.remove("hidden");
 
+          // Populate station info in side panel
           document.getElementById("info-name").textContent = sName;
           document.getElementById("info-address").textContent = sAddress;
           document.getElementById("info-operator").textContent = sOperator;
           document.getElementById("info-usage").textContent = sUsage;
           document.getElementById("info-coordinates").textContent = `${sLat.toFixed(3)}, ${sLng.toFixed(3)}`;
+          document.getElementById("info-uid").textContent = sUID; // <-- Show UID
 
+          // Copy to clipboard
+          const copyBtn = document.getElementById("copy-uid-btn");
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(sUID)
+              .then(() => alert("Station UID copied to clipboard!"))
+              .catch(err => {
+                logger.error("Failed to copy UID:", err);
+                alert("Failed to copy UID.");
+              });
+          };
+
+          // Directions link
           document.getElementById("directions-link").href =
             `https://www.google.com/maps/dir/?api=1&destination=${sLat},${sLng}`;
 
@@ -101,12 +116,14 @@ navigator.geolocation.getCurrentPosition(
 
           logger.log(`Station clicked: ${sName}`);
 
+          // Load slots
           const slotContainer = document.getElementById("slot-list");
-          slotContainer.innerHTML = "<p>Loading slots...</p>";      
-          const stationDocId = station.AddressInfo.ID.toString(); // Use API's station ID
+          slotContainer.innerHTML = "<p>Loading slots...</p>";
+          const stationDocId = sUID; // Use UID as document ID
           const slotsRef = collection(db, "slots", stationDocId, "timeSlots");
           const slotSnap = await getDocs(slotsRef);
-          slotContainer.innerHTML = ""; // clear loading
+          slotContainer.innerHTML = "";
+
           slotSnap.forEach((docSnap) => {
             const data = docSnap.data();
             const slotDiv = document.createElement("div");
@@ -114,45 +131,44 @@ navigator.geolocation.getCurrentPosition(
             const currentUser = auth.currentUser;
             const isBookedByUser = data.bookedBy === currentUser.uid;
             const isAvailable = data.status === "Available";
+
             slotDiv.innerHTML = `
               <p>${data.time}</p>
               <button data-id="${docSnap.id}" ${!isAvailable && !isBookedByUser ? "disabled" : ""}>
                 ${isAvailable ? "Book Now" : isBookedByUser ? "Cancel Booking" : "Booked"}
               </button>
             `;
-            // Booking logic
+
+            // Booking / Cancel logic
             slotDiv.querySelector("button").addEventListener("click", async (e) => {
               const slotId = e.target.dataset.id;
-              const isBookedByUser = data.bookedBy === currentUser.uid;
               try {
                 if (isBookedByUser) {
-                  // Cancel the booking
                   await updateDoc(doc(db, "slots", stationDocId, "timeSlots", slotId), {
                     status: "Available",
                     bookedBy: "",
                   });
-                  logger.log(`Booking canceled: ${slotId}`);
                   e.target.textContent = "Book Now";
+                  logger.log(`Booking canceled: ${slotId}`);
                 } else {
-                  // Book the slot
                   await updateDoc(doc(db, "slots", stationDocId, "timeSlots", slotId), {
                     status: "booked",
                     bookedBy: currentUser.uid,
                   });
-                  logger.log(`Slot booked: ${slotId}`);
                   e.target.textContent = "Cancel Booking";
+                  logger.log(`Slot booked: ${slotId}`);
                 }
-                e.target.disabled = false;
                 alert("Slot updated successfully!");
               } catch (err) {
-                logger.error("Slot update failed.");
+                logger.error("Slot update failed.", err);
                 alert("Slot update failed. Please try again.");
               }
             });
-          
+
             slotContainer.appendChild(slotDiv);
           });
         });
+
         stationList.appendChild(div);
       });
     } catch (err) {
